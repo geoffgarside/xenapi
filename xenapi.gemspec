@@ -25,7 +25,8 @@ Gem::Specification.new do |s|
      "VERSION",
      "lib/xenapi.rb",
      "test/helper.rb",
-     "test/test_xenapi.rb"
+     "test/test_xenapi.rb",
+     "xenapi.gemspec"
   ]
   s.homepage = %q{http://github.com/geoffgarside/xenapi}
   s.rdoc_options = ["--charset=UTF-8"]
