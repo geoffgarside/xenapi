@@ -2,6 +2,14 @@
 
 Description goes here.
 
+== History
+
+* 0.1.0 - 2010-02-15
+  * Added support for 'async' prefixed requests
+
+* 0.0.0 - 2010-02-11
+  * Initial Release
+
 == Note on Patches/Pull Requests
  
 * Fork the project.
