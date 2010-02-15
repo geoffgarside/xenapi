@@ -4,6 +4,9 @@ Description goes here.
 
 == History
 
+* 0.2.1 - 2010-02-15
+  * Allow for calling the after_login with the client object
+
 * 0.2.0 - 2010-02-15
   * Add after_login callback
   * Expose Session as xenapi_session
