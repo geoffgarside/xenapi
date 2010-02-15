@@ -18,6 +18,13 @@ module XenApi #:nodoc:
       @uri = URI.parse(uri)
       @uri.path = '/' if @uri.path == ''
     end
+    def after_login(&block)
+      if block
+        @after_login = block
+      elsif @after_login
+        @after_login.call
+      end
+    end
     def method_missing(meth, *args)
       case meth.to_s
       when /^login/
@@ -54,6 +61,7 @@ module XenApi #:nodoc:
           @session = _do_call("session.#{meth}", args)
           @login_meth = meth
           @login_args = args
+          after_login
           true
         rescue Exception => e
           raise e
