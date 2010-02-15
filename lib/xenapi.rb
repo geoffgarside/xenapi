@@ -25,6 +25,9 @@ module XenApi #:nodoc:
         @after_login.call
       end
     end
+    def xenapi_session
+      @session
+    end
     def method_missing(meth, *args)
       case meth.to_s
       when /^login/
