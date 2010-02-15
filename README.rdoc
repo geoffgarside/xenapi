@@ -4,6 +4,9 @@ Description goes here.
 
 == History
 
+* 0.1.2 - 2010-02-15
+  * Prevent explosions when an empty path is provided to the XMLRPC::Client
+
 * 0.1.1 - 2010-02-15
   * Codename: I find your lack of tests disturbing
   * Correct async => Async
