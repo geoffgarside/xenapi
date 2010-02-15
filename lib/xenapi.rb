@@ -22,7 +22,12 @@ module XenApi #:nodoc:
       if block
         @after_login = block
       elsif @after_login
-        @after_login.call
+        case @after_login.arity
+        when 1
+          @after_login.call(self)
+        else
+          @after_login.call
+        end
       end
     end
     def xenapi_session
