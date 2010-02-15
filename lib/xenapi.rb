@@ -16,7 +16,7 @@ module XenApi #:nodoc:
     def initialize(uri, timeout = 10)
       @timeout = timeout
       @uri = URI.parse(uri)
-      @uri = URI.parse(uri + '/') if @uri.path == ''
+      @uri.path = '/' if @uri.path == ''
     end
     def method_missing(meth, *args)
       case meth.to_s
