@@ -21,7 +21,7 @@ module XenApi #:nodoc:
       case meth.to_s
       when /^login/
         _login(meth, *args)
-      when /^async/
+      when /^async/i
         AsyncDispatcher.new(self, :_call)
       else
         Dispatcher.new(self, meth, :_call)
@@ -97,7 +97,7 @@ module XenApi #:nodoc:
       "#<#{self.class}>"
     end
     def method_missing(meth, *args)
-      Dispatcher.new(@client, "async.#{meth}", @sender)
+      Dispatcher.new(@client, "Async.#{meth}", @sender)
     end
   end
 end

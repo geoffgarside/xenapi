@@ -4,6 +4,10 @@ Description goes here.
 
 == History
 
+* 0.1.1 - 2010-02-15
+  * Codename: I find your lack of tests disturbing
+  * Correct async => Async
+
 * 0.1.0 - 2010-02-15
   * Added support for 'async' prefixed requests
 
