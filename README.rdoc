@@ -4,6 +4,10 @@ Description goes here.
 
 == History
 
+* 0.2.0 - 2010-02-15
+  * Add after_login callback
+  * Expose Session as xenapi_session
+
 * 0.1.2 - 2010-02-15
   * Prevent explosions when an empty path is provided to the XMLRPC::Client
 
