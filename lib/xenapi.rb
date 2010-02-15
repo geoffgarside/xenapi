@@ -13,9 +13,9 @@ module XenApi #:nodoc:
       "#<#{self.class} #{@uri}>"
     end
 
-    def initialize(uri)
+    def initialize(uri, timeout = 10)
       @uri = URI.parse(uri)
-      @client = XMLRPC::Client.new(@uri.host, @uri.path || '/', @uri.port, nil, nil, nil, nil, @uri.port == 443, 10)
+      @client = XMLRPC::Client.new(@uri.host, @uri.path || '/', @uri.port, nil, nil, nil, nil, @uri.port == 443, timeout)
     end
     def method_missing(meth, *args)
       case meth.to_s
