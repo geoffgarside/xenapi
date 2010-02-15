@@ -13,10 +13,20 @@ module XenApi #:nodoc:
       "#<#{self.class} #{@uri}>"
     end
 
-    def initialize(uri)
+    def initialize(uri, timeout = 10)
+      @timeout = timeout
       @uri = URI.parse(uri)
-      @uri = URI.parse(uri + '/') if @uri.path == ''
-      @client = XMLRPC::Client.new(@uri.host, @uri.path, @uri.port, nil, nil, nil, nil, @uri.port == 443, 10)
+      @uri.path = '/' if @uri.path == ''
+    end
+    def after_login(&block)
+      if block
+        @after_login = block
+      elsif @after_login
+        @after_login.call
+      end
+    end
+    def xenapi_session
+      @session
     end
     def method_missing(meth, *args)
       case meth.to_s
@@ -54,13 +64,14 @@ module XenApi #:nodoc:
           @session = _do_call("session.#{meth}", args)
           @login_meth = meth
           @login_args = args
+          after_login
           true
         rescue Exception => e
           raise e
         end
       end
       def _client
-        @client ||= XMLRPC::Client.new(@uri.host, @uri.path || '/', @uri.port, nil, nil, nil, nil, @uri.port == 443, 10)
+        @client ||= XMLRPC::Client.new(@uri.host, @uri.path, @uri.port, nil, nil, nil, nil, @uri.port == 443, @timeout)
       end
       def _do_call(meth, args, attempts = 3)
         r = _client.call(meth, *args)
