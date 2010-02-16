@@ -93,6 +93,10 @@ module XenApi #:nodoc:
       end
   end
   class Dispatcher
+    [:clone].each do |m|    # Undef methods which mask Xen API calls
+      undef m
+    end
+
     def initialize(client, prefix, sender)
       @client = client
       @prefix = prefix
