@@ -4,6 +4,9 @@ Description goes here.
 
 == History
 
+* 0.2.5 - 2010-02-16
+  * [BugFix]: Fix issues with API calls which are passed arrays as their arguments
+
 * 0.2.4 - 2010-02-16
   * [BugFix]: Fix undef of clone method on Dispatcher
 
