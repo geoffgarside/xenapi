@@ -46,7 +46,7 @@ module XenApi #:nodoc:
     protected
       def _call(meth, *args)
         begin
-          _do_call(meth, [@session, args].flatten.compact)
+          _do_call(meth, args.dup.unshift(@session))
         rescue SessionInvalid
           _relogin
           retry
