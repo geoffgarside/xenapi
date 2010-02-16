@@ -4,6 +4,9 @@ Description goes here.
 
 == History
 
+* 0.2.2 - 2010-02-16
+  * Prevent the Ruby :clone method from masking the API method
+
 * 0.2.1 - 2010-02-15
   * Allow for calling the after_login with the client object
 
