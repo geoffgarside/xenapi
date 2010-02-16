@@ -4,6 +4,9 @@ Description goes here.
 
 == History
 
+* 0.2.4 - 2010-02-16
+  * [BugFix]: Fix undef of clone method on Dispatcher
+
 * 0.2.3 - 2010-02-16
   * [BugFix]: Reattempted calls would fail after a re-login occurred
 
