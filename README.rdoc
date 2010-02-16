@@ -4,6 +4,9 @@ Description goes here.
 
 == History
 
+* 0.2.3 - 2010-02-16
+  * [BugFix]: Reattempted calls would fail after a re-login occurred
+
 * 0.2.2 - 2010-02-16
   * Prevent the Ruby :clone method from masking the API method
 

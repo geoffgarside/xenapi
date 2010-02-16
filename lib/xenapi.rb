@@ -45,18 +45,17 @@ module XenApi #:nodoc:
     end
     protected
       def _call(meth, *args)
-        args.unshift(@session) if @session
         begin
-          _do_call(meth, args)
+          _do_call(meth, [@session, args].flatten.compact)
         rescue SessionInvalid
           _relogin
-          _do_call(meth, args)
+          retry
         rescue EOFError
           @client = nil
-          _call(meth, *args)
+          retry
         rescue Errno::EPIPE
           @client = nil
-          _call(meth, *args)
+          retry
         end
       end
     private
