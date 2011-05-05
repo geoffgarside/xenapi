@@ -29,6 +29,7 @@ module XenApi #:nodoc:
           @after_login.call
         end
       end
+      self
     end
     def xenapi_session
       @session
