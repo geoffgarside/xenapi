@@ -88,7 +88,7 @@ module XenApi #:nodoc:
         else
           raise ResponseMissingErrorDescriptionField unless r.has_key?('ErrorDescription')
           raise SessionInvalid if r['ErrorDescription'][0] == 'SESSION_INVALID'
-          raise r['ErrorDescription'].inspect
+          raise Errors.exception_class_from_desc(r['ErrorDescription'].shift), r['ErrorDescription'].inspect
         end
       end
   end
