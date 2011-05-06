@@ -51,3 +51,9 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+task :deploy => :build do
+  version = File.exist?('VERSION') ? File.read('VERSION').chomp : ""
+  sh "scp pkg/xenapi-#{version}.gem famine:sites/gems/public_html/gems/"
+  sh "ssh famine 'cd sites/gems/public_html && gem generate'"
+end
