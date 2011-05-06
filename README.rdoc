@@ -4,6 +4,14 @@ Description goes here.
 
 == History
 
+* 0.2.6 - 2011-05-06
+  * [Enhancement]: Changed XenApi::Client#after_login to return self. Allows for adding
+    an #after_login block while creating the XenApi::Client such as
+
+        client = XenApi::Client.new("http://192.168.1.2").after_login do |c|
+	  c.event.register(['vm'])
+	end
+
 * 0.2.5 - 2010-02-16
   * [BugFix]: Fix issues with API calls which are passed arrays as their arguments
 
