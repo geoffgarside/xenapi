@@ -1,5 +1,9 @@
 = XenApi History
 
+=== 0.2.7 - 2011-05-09
+* Add specific Exceptions for Xen API method errors. These are kept under XenApi::Errors.
+* Massive internal cleanup and documentation
+
 === 0.2.6 - 2011-05-06
 * [Enhancement]: Changed XenApi::Client#after_login to return self. Allows for adding
   an #after_login block while creating the XenApi::Client such as
