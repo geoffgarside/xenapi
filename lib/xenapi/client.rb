@@ -241,7 +241,7 @@ module XenApi #:nodoc:
 
         if r['Status'] == 'Success'
           return r['Value'] if r.has_key?('Value')
-          raise ResponseMissingStatusField
+          raise ResponseMissingValueField
         else
           raise ResponseMissingErrorDescriptionField unless r.has_key?('ErrorDescription')
           raise SessionInvalid if r['ErrorDescription'][0] == 'SESSION_INVALID'
