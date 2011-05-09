@@ -1,0 +1,45 @@
+= XenApi History
+
+=== 0.2.7 - 2011-05-09
+* Add specific Exceptions for Xen API method errors. These are kept under XenApi::Errors.
+* Massive internal cleanup and documentation
+
+=== 0.2.6 - 2011-05-06
+* [Enhancement]: Changed XenApi::Client#after_login to return self. Allows for adding
+  an #after_login block while creating the XenApi::Client such as
+
+    client = XenApi::Client.new("http://192.168.1.2").after_login do |c|
+      c.event.register(['vm'])
+    end
+
+=== 0.2.5 - 2010-02-16
+* [BugFix]: Fix issues with API calls which are passed arrays as their arguments
+
+=== 0.2.4 - 2010-02-16
+* [BugFix]: Fix undef of clone method on Dispatcher
+
+=== 0.2.3 - 2010-02-16
+* [BugFix]: Reattempted calls would fail after a re-login occurred
+
+=== 0.2.2 - 2010-02-16
+* Prevent the Ruby :clone method from masking the API method
+
+=== 0.2.1 - 2010-02-15
+* Allow for calling the after_login with the client object
+
+=== 0.2.0 - 2010-02-15
+* Add after_login callback
+* Expose Session as xenapi_session
+
+=== 0.1.2 - 2010-02-15
+* Prevent explosions when an empty path is provided to the XMLRPC::Client
+
+=== 0.1.1 - 2010-02-15
+* Codename: I find your lack of tests disturbing
+* Correct async => Async
+
+=== 0.1.0 - 2010-02-15
+* Added support for 'async' prefixed requests
+
+=== 0.0.0 - 2010-02-11
+* Initial Release
