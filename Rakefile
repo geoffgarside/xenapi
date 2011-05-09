@@ -52,8 +52,12 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-task :deploy => :build do
-  version = File.exist?('VERSION') ? File.read('VERSION').chomp : ""
-  sh "scp pkg/xenapi-#{version}.gem famine:sites/gems/public_html/gems/"
-  sh "ssh famine 'cd sites/gems/public_html && gem generate'"
+begin
+  require 'yard'
+  YARD::Rake::YardocTask.new { |y| y.options += %w(--no-private) }
+  YARD::Rake::YardocTask.new('yard:dev') { |y| y.options += %w(--protected --private) }
+rescue LoadError
+  task :yardoc do
+    abort "YARD is not available. In order to run yardoc, you must: sudo gem install yard"
+  end
 end
