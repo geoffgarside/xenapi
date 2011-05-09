@@ -179,14 +179,20 @@ module XenApi #:nodoc:
         begin
           _do_call(meth, args.dup.unshift(@session))
         rescue SessionInvalid
+          _relogin_attempts = (_relogin_attempts || 0) + 1
           _relogin
-          retry
+          retry unless _relogin_attempts > 2
+          raise
         rescue EOFError
+          _eof_retries = (_eof_retries || 0) + 1
           @client = nil
-          retry
+          retry unless _eof_retries > 1
+          raise
         rescue Errno::EPIPE
+          _epipe_retries = (_epipe_retries || 0) + 1
           @client = nil
-          retry
+          retry unless _epipe_retries > 1
+          raise
         end
       end
     private
