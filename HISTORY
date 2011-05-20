@@ -1,5 +1,8 @@
 = XenApi History
 
+=== 0.2.9 - 2011-05-20
+* Yet another version bump due to jeweler fucking up and not releasing the right code
+
 === 0.2.8 - 2011-05-20
 * Fix issue with Async calls raising NameError for missing AsyncDispatcher
 
