@@ -1,5 +1,8 @@
 = XenApi History
 
+=== 0.2.8 - 2011-05-20
+* Fix issue with Async calls raising NameError for missing AsyncDispatcher
+
 === 0.2.7 - 2011-05-09
 * Add specific Exceptions for Xen API method errors. These are kept under XenApi::Errors.
 * Massive internal cleanup and documentation
