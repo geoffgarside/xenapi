@@ -1,5 +1,8 @@
 = XenApi History
 
+=== 0.2.10 - 2011-05-23
+* Include Xen XMLRPC API error name when raising a XenApi::Errors::GenericError
+
 === 0.2.9 - 2011-05-20
 * Yet another version bump due to jeweler fucking up and not releasing the right code
 
