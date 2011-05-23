@@ -251,7 +251,11 @@ module XenApi #:nodoc:
         else
           raise ResponseMissingErrorDescriptionField unless r.has_key?('ErrorDescription')
           raise SessionInvalid if r['ErrorDescription'][0] == 'SESSION_INVALID'
-          raise Errors.exception_class_from_desc(r['ErrorDescription'].shift), r['ErrorDescription'].inspect
+
+          ed = r['ErrorDescription'].shift
+          ex = Errors.exception_class_from_desc(ed)
+          r['ErrorDescription'].unshift(ed) if ex.is_a? Errors::GenericError
+          raise ex, r['ErrorDescription'].inspect
         end
       end
   end
