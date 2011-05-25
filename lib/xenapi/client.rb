@@ -254,7 +254,7 @@ module XenApi #:nodoc:
 
           ed = r['ErrorDescription'].shift
           ex = Errors.exception_class_from_desc(ed)
-          r['ErrorDescription'].unshift(ed) if ex.is_a? Errors::GenericError
+          r['ErrorDescription'].unshift(ed) if ex == Errors::GenericError
           raise ex, r['ErrorDescription'].inspect
         end
       end
