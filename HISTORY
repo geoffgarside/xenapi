@@ -1,5 +1,8 @@
 = XenApi History
 
+=== 0.2.11 - 2011-05-25
+* [BugFix]: Including the Xen XMLRPC API error name with a GenericError did not work
+
 === 0.2.10 - 2011-05-23
 * Include Xen XMLRPC API error name when raising a XenApi::Errors::GenericError
 
